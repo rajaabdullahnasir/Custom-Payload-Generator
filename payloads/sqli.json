@@ -28,15 +28,5 @@
     "type": "Union-based",
     "payload": "' AND 1=1 UNION SELECT null, database(), user()--",
     "bypass": true
-  },
-  {
-    "type": "Union-based",
-    "payload": "' OR 1=1/*",
-    "bypass": false
-  },
-  {
-    "type": "Error-based",
-    "payload": "' OR 1=1#",
-    "bypass": false
   }
 ]

@@ -4,47 +4,49 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
-// GenericPayload is a common struct to export any payload
-type GenericPayload struct {
-	Type    string `json:"type,omitempty"`
-	Payload string `json:"payload"`
-	Encoded string `json:"encoded,omitempty"`
-	Bypass  bool   `json:"bypass,omitempty"`
-}
-
-// ExportToJSON writes the list of payloads to a JSON file
-func ExportToJSON(filename string, payloads []GenericPayload) error {
-	data, err := json.MarshalIndent(payloads, "", "  ")
+// SaveAsJSON saves any data structure as formatted JSON
+func SaveAsJSON(data interface{}, fileName string) error {
+	content, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
-		return fmt.Errorf("failed to marshal payloads: %v", err)
+		return fmt.Errorf("failed to marshal JSON: %v", err)
 	}
 
-	err = os.WriteFile(filename, data, 0644)
+	path := filepath.Join("reports", fileName+".json")
+	err = os.WriteFile(path, content, 0644)
 	if err != nil {
 		return fmt.Errorf("failed to write JSON file: %v", err)
 	}
-
-	fmt.Printf("✅ Payloads saved to %s\n", filename)
 	return nil
 }
 
-// ExportToText writes only raw payloads to a text file (one per line)
-func ExportToText(filename string, payloads []GenericPayload) error {
-	file, err := os.Create(filename)
+// SaveAsTXT saves simple line-based payloads
+func SaveAsTXT(lines []string, fileName string) error {
+	path := filepath.Join("reports", fileName+".txt")
+	file, err := os.Create(path)
 	if err != nil {
-		return fmt.Errorf("failed to create text file: %v", err)
+		return fmt.Errorf("failed to create txt file: %v", err)
 	}
 	defer file.Close()
 
-	for _, p := range payloads {
-		_, err := file.WriteString(p.Payload + "\n")
+	for _, line := range lines {
+		_, err := file.WriteString(line + "\n")
 		if err != nil {
-			return fmt.Errorf("failed to write payload to file: %v", err)
+			return fmt.Errorf("failed to write to txt file: %v", err)
 		}
 	}
-
-	fmt.Printf("✅ Payloads saved to %s\n", filename)
 	return nil
+}
+
+// PrintToConsole displays payloads to stdout in readable format
+func PrintToConsole(title string, data interface{}) {
+	fmt.Println("====", title, "====")
+	jsonBytes, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		fmt.Printf("Error displaying data: %v\n", err)
+		return
+	}
+	fmt.Println(string(jsonBytes))
 }

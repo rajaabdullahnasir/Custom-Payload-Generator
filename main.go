@@ -1,113 +1,148 @@
-// main.go
 package main
 
 import (
-	"encoding/json"
+	"flag"
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/modules"
+	"github.com/rajaabdullahnasir/Custom-Payload-Generator/utils"
 )
 
+var helpText = `
+██████╗ ██████╗ ██████╗ ███████╗██████╗  ██████╗  ██████╗  ██████╗ 
+██╔══██╗██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔═══██╗██╔════╝ 
+██████╔╝██║   ██║██████╔╝█████╗  ██████╔╝██║   ██║██║   ██║██║  ███╗
+██╔═══╝ ██║   ██║██╔═══╝ ██╔══╝  ██╔═══╝ ██║   ██║██║   ██║██║   ██║
+██║     ╚██████╔╝██║     ███████╗██║     ╚██████╔╝╚██████╔╝╚██████╔╝
+╚═╝      ╚═════╝ ╚═╝     ╚══════╝╚═╝      ╚═════╝  ╚═════╝  ╚═════╝ 
+
+Modular Payload Generator Tool by @rajaabdullahnasir
+
+USAGE:
+  ./payloadgen [--xss | --sqli | --cmdi] [--output=json|txt|console] [--save] [--clipboard]
+
+FLAGS:
+  --xss           Generate XSS payloads
+  --sqli          Generate SQL Injection payloads
+  --cmdi          Generate Command Injection payloads
+  --output        Set output format: console (default), json, txt
+  --save          Save output to ./reports/
+  --clipboard     Copy output to clipboard
+  --help          Show this help menu
+
+EXAMPLES:
+  ./payloadgen --xss --output=json 
+  ./payloadgen --cmdi --output=txt 
+  ./payloadgen --sqli
+
+  Enjoy hacking ethically! 🔐
+`
+
 func main() {
-	// Create report files
-	jsonFile, err := os.Create("reports/results.json")
-	if err != nil {
-		fmt.Println("❌ Failed to create results.json:", err)
+	// Define flags
+	xss := flag.Bool("xss", false, "Generate XSS payloads")
+	sqli := flag.Bool("sqli", false, "Generate SQLi payloads")
+	cmdi := flag.Bool("cmdi", false, "Generate CMDi payloads")
+
+	output := flag.String("output", "console", "Output format: json, txt, console")
+	save := flag.Bool("save", false, "Save to reports/")
+	clip := flag.Bool("clipboard", false, "Copy payloads to clipboard")
+	help := flag.Bool("help", false, "Show help menu")
+
+	flag.Parse()
+
+	// Show help if requested
+	if *help || (!*xss && !*sqli && !*cmdi) {
+		fmt.Println(helpText)
 		return
 	}
-	defer jsonFile.Close()
 
-	txtFile, err := os.Create("reports/payloads.txt")
-	if err != nil {
-		fmt.Println("❌ Failed to create payloads.txt:", err)
-		return
-	}
-	defer txtFile.Close()
-
-	allResults := make(map[string]interface{})
-
-	// =======================
-	// SQLi Payloads
-	// =======================
-	sqlPayloads, err := modules.GenerateSQLiPayloads()
-	writeSectionHeader(txtFile, "🔍 SQL Injection Payloads")
-	if err != nil {
-		fmt.Fprintf(txtFile, "❌ Failed to load SQLi payloads: %v\n", err)
-	} else {
-		allResults["sqli"] = sqlPayloads
-		for _, p := range sqlPayloads {
-			writePayloadToReport(txtFile, map[string]string{
-				"Type":    p.Type,
-				"Bypass":  fmt.Sprint(p.Bypass),
-				"Payload": p.Payload,
-				"Encoded": p.Encoded,
-			})
+	if *xss {
+		payloads, err := modules.GenerateXSSPayloads()
+		if err != nil {
+			log.Fatalf("❌ Failed to generate XSS payloads: %v", err)
 		}
+		handleOutput("xss_payloads", payloads, *output, *save, *clip)
 	}
 
-	// =======================
-	// XSS Payloads
-	// =======================
-	xssPayloads, err := modules.GenerateXSSPayloads()
-	writeSectionHeader(txtFile, "🚨 XSS Payloads")
-	if err != nil {
-		fmt.Fprintf(txtFile, "❌ Failed to load XSS payloads: %v\n", err)
-	} else {
-		allResults["xss"] = xssPayloads
-		for _, p := range xssPayloads {
-			writePayloadToReport(txtFile, map[string]string{
-				"Type":    p.Type,
-				"Bypass":  fmt.Sprint(p.Bypass),
-				"Payload": p.Payload,
-				"Encoded": p.Encoded,
-			})
+	if *sqli {
+		payloads, err := modules.GenerateSQLiPayloads()
+		if err != nil {
+			log.Fatalf("❌ Failed to generate SQLi payloads: %v", err)
 		}
+		handleOutput("sqli_payloads", payloads, *output, *save, *clip)
 	}
 
-	// =======================
-	// CMD Injection Payloads
-	// =======================
-	cmdPayloads := modules.GenerateCMDiPayloads("linux", "whoami", []string{";", "&&", "|"})
-	writeSectionHeader(txtFile, "💣 Command Injection Payloads (Linux)")
-	allResults["cmd"] = cmdPayloads
-	for _, p := range cmdPayloads {
-		writePayloadToReport(txtFile, map[string]string{
-			"OS":         p.OS,
-			"Command":    p.Command,
-			"Operator":   p.Operator,
-			"Original":   p.Original,
-			"Base64":     p.Base64,
-			"URLEncoded": p.URLEncoded,
-			"HexEncoded": p.HexEncoded,
-			"Unicode":    p.Unicode,
-			"Obfuscated": p.Obfuscated,
-		})
+	if *cmdi {
+		payloads := modules.GenerateCMDiPayloads()
+		handleOutput("cmdi_payloads", payloads, *output, *save, *clip)
 	}
-
-	// Write JSON Report
-	jsonData, err := json.MarshalIndent(allResults, "", "  ")
-	if err != nil {
-		fmt.Println("❌ Failed to marshal results to JSON:", err)
-		return
-	}
-	if _, err := jsonFile.Write(jsonData); err != nil {
-		fmt.Println("❌ Failed to write to results.json:", err)
-		return
-	}
-
-	fmt.Println("\n✅ All payloads written to reports/results.json and reports/payloads.txt")
 }
 
-func writeSectionHeader(f *os.File, title string) {
-	fmt.Fprintln(f, "\n====================================")
-	fmt.Fprintln(f, title)
-	fmt.Fprintln(f, "====================================")
+func handleOutput(name string, payloads interface{}, format string, save bool, clip bool) {
+	switch format {
+	case "json":
+		if save {
+			err := utils.SaveAsJSON(payloads, name)
+			if err != nil {
+				log.Printf("⚠️ Could not save JSON: %v", err)
+			} else {
+				fmt.Printf("✅ Saved %s.json in /reports/\n", name)
+			}
+		} else {
+			utils.PrintToConsole(name, payloads)
+		}
+	case "txt":
+		lines := flattenPayloads(payloads)
+		if save {
+			err := utils.SaveAsTXT(lines, name)
+			if err != nil {
+				log.Printf("⚠️ Could not save TXT: %v", err)
+			} else {
+				fmt.Printf("✅ Saved %s.txt in /reports/\n", name)
+			}
+		} else {
+			utils.PrintToConsole(name, lines)
+		}
+	case "console":
+		utils.PrintToConsole(name, payloads)
+	default:
+		fmt.Println("❌ Invalid output format. Use json, txt, or console.")
+		os.Exit(1)
+	}
+
+	if clip {
+		lines := flattenPayloads(payloads)
+		if len(lines) > 0 {
+			err := utils.CopyToClipboard(lines[0])
+			if err != nil {
+				log.Printf("⚠️ Could not copy to clipboard: %v", err)
+			} else {
+				fmt.Println("📋 First payload copied to clipboard!")
+			}
+		}
+	}
 }
 
-func writePayloadToReport(f *os.File, data map[string]string) {
-	for k, v := range data {
-		fmt.Fprintf(f, "%s: %s\n", k, v)
+func flattenPayloads(data interface{}) []string {
+	var lines []string
+	switch v := data.(type) {
+	case []modules.XSSPayload:
+		for _, p := range v {
+			lines = append(lines, p.Payload)
+		}
+	case []modules.SQLiPayload:
+		for _, p := range v {
+			lines = append(lines, p.Payload)
+		}
+	case []modules.CMDPayload:
+		for _, p := range v {
+			lines = append(lines, p.Original)
+		}
+	default:
+		lines = append(lines, fmt.Sprintf("%v", v))
 	}
-	fmt.Fprintln(f, "------------------------------------")
+	return lines
 }

