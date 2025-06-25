@@ -8,6 +8,7 @@ import (
 
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/modules"
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/utils"
+	"github.com/rajaabdullahnasir/Custom-Payload-Generator/zapapi"
 )
 
 var helpText = `
@@ -21,44 +22,58 @@ var helpText = `
 Modular Payload Generator Tool by @rajaabdullahnasir
 
 USAGE:
-  ./payloadgen [--xss | --sqli | --cmdi] [--output=json|txt|console] [--save] [--clipboard]
+  ./payloadgen [--xss | --sqli | --cmdi | --zapscan] [flags]
 
 FLAGS:
   --xss           Generate XSS payloads
   --sqli          Generate SQL Injection payloads
   --cmdi          Generate Command Injection payloads
-  --output        Set output format: console (default), json, txt
+  --zapscan       Run an automated ZAP scan
+  --target        Target URL (required for --zapscan)
+  --zap-host      ZAP daemon host (default: localhost)
+  --zap-port      ZAP daemon port (default: 8080)
+  --zap-key       ZAP API key
+  --output        Output format: json, txt, console
   --save          Save output to ./reports/
   --clipboard     Copy output to clipboard
-  --help          Show this help menu
+  --help          Show help menu
 
 EXAMPLES:
   ./payloadgen --xss --output=json 
   ./payloadgen --cmdi --output=txt 
-  ./payloadgen --sqli
+  ./payloadgen --zapscan --target=http://example.com --zap-key=abc123
 
   Enjoy hacking ethically! 🔐
 `
 
 func main() {
-	// Define flags
+	// Payload generation flags
 	xss := flag.Bool("xss", false, "Generate XSS payloads")
 	sqli := flag.Bool("sqli", false, "Generate SQLi payloads")
 	cmdi := flag.Bool("cmdi", false, "Generate CMDi payloads")
 
+	// Output options
 	output := flag.String("output", "console", "Output format: json, txt, console")
-	save := flag.Bool("save", false, "Save to reports/")
-	clip := flag.Bool("clipboard", false, "Copy payloads to clipboard")
-	help := flag.Bool("help", false, "Show help menu")
+	save := flag.Bool("save", false, "Save output to ./reports/")
+	clip := flag.Bool("clipboard", false, "Copy output to clipboard")
 
+	// ZAP scan flags
+	zapscan := flag.Bool("zapscan", false, "Run an automated ZAP scan")
+	target := flag.String("target", "", "Target URL for scanning")
+	zapHost := flag.String("zap-host", "localhost", "ZAP daemon host")
+	zapPort := flag.String("zap-port", "8080", "ZAP daemon port")
+	zapKey := flag.String("zap-key", "", "ZAP API key")
+
+	help := flag.Bool("help", false, "Show help menu")
 	flag.Parse()
 
-	// Show help if requested
-	if *help || (!*xss && !*sqli && !*cmdi) {
+	// Show help
+	if *help || (!*xss && !*sqli && !*cmdi && !*zapscan) {
 		fmt.Println(helpText)
 		return
 	}
 
+	// Payload Generator
 	if *xss {
 		payloads, err := modules.GenerateXSSPayloads()
 		if err != nil {
@@ -78,6 +93,17 @@ func main() {
 	if *cmdi {
 		payloads := modules.GenerateCMDiPayloads()
 		handleOutput("cmdi_payloads", payloads, *output, *save, *clip)
+	}
+
+	// ZAP Scanner
+	if *zapscan {
+		if *target == "" || *zapKey == "" {
+			log.Fatal("❌ Target URL and ZAP API key are required for ZAP scan.")
+		}
+		err := zapapi.RunZAPScan(*target, *zapHost, *zapPort, *zapKey)
+		if err != nil {
+			log.Fatalf("❌ ZAP Scan failed: %v", err)
+		}
 	}
 }
 
