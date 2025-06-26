@@ -23,27 +23,29 @@ var helpText = `
 Modular Payload Generator Tool by @rajaabdullahnasir
 
 USAGE:
-  ./payloadgen [--xss | --sqli | --cmdi | --zapscan] [flags]
+  ./payloadgen [--xss | --sqli | --cmdi | --zapscan | --generate-report] [flags]
 
 FLAGS:
-  --xss           Generate XSS payloads
-  --sqli          Generate SQL Injection payloads
-  --cmdi          Generate Command Injection payloads
-  --zapscan       Run an automated ZAP scan
-  --target        Target URL (required for --zapscan)
-  --zap-host      ZAP daemon host (default: localhost)
-  --zap-port      ZAP daemon port (default: 8080)
-  --zap-key       ZAP API key
-  --output        Output format: json, txt, console
-  --save          Save output to ./reports/
-  --clipboard     Copy output to clipboard
-  --help          Show help menu
+  --xss              Generate XSS payloads
+  --sqli             Generate SQL Injection payloads
+  --cmdi             Generate Command Injection payloads
+  --zapscan          Run an automated ZAP scan
+  --target           Target URL (required for --zapscan)
+  --zap-host         ZAP daemon host (default: localhost)
+  --zap-port         ZAP daemon port (default: 8080)
+  --zap-key          ZAP API key
+  --generate-report  Generate HTML report from existing ZAP results
+  --output           Output format: json, txt, console
+  --save             Save output to ./reports/
+  --clipboard        Copy output to clipboard
+  --help             Show help menu
 
 EXAMPLES:
   ./payloadgen --xss --output=json 
   ./payloadgen --cmdi --output=txt 
   ./payloadgen --sqli
   ./payloadgen --zapscan --target=http://example.com --zap-key=abc123
+  ./payloadgen --generate-report
 
   Enjoy hacking ethically! 🔐
 `
@@ -66,11 +68,15 @@ func main() {
 	zapPort := flag.String("zap-port", "8080", "ZAP daemon port")
 	zapKey := flag.String("zap-key", "", "ZAP API key")
 
+	// Report flag
+	generateReport := flag.Bool("generate-report", false, "Generate HTML report from existing ZAP results")
+
+	// Help
 	help := flag.Bool("help", false, "Show help menu")
 	flag.Parse()
 
 	// Show help
-	if *help || (!*xss && !*sqli && !*cmdi && !*zapscan) {
+	if *help || (!*xss && !*sqli && !*cmdi && !*zapscan && !*generateReport) {
 		fmt.Println(helpText)
 		return
 	}
@@ -114,6 +120,21 @@ func main() {
 			err := reports.GenerateHTMLReport(reportPath)
 			if err != nil {
 				log.Fatalf("❌ Failed to generate HTML report: %v", err)
+			}
+		} else {
+			log.Println("⚠️ No results.json found. Skipping report generation.")
+		}
+	}
+
+	// Manual report generation
+	if *generateReport {
+		reportPath := "reports/results.json"
+		if _, err := os.Stat(reportPath); err == nil {
+			err := reports.GenerateHTMLReport(reportPath)
+			if err != nil {
+				log.Fatalf("❌ Failed to generate HTML report: %v", err)
+			} else {
+				fmt.Println("📄 Report successfully generated.")
 			}
 		} else {
 			log.Println("⚠️ No results.json found. Skipping report generation.")

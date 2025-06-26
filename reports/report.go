@@ -6,39 +6,49 @@ import (
 	"html/template"
 	"os"
 	"time"
-) 
+)
 
-// Alert defines the structure of a ZAP scan alert
 type Alert struct {
-	Alert   string `json:"alert"`
-	Name    string `json:"name"`
-	Risk    string `json:"risk"`
-	Desc    string `json:"description"`
+	Alert    string `json:"alert"`
+	Name     string `json:"name"`
+	Risk     string `json:"risk"`
+	Desc     string `json:"description"`
 	Solution string `json:"solution"`
-	Param   string `json:"param"`
+	Param    string `json:"param"`
 	Evidence string `json:"evidence"`
-	URL     string `json:"url"`
+	URL      string `json:"url"`
 }
 
-// ScanResult is the full structure of scan result
 type ScanResult struct {
 	TargetURL string                   `json:"target_url"`
 	ScanID    string                   `json:"scan_id"`
 	Timestamp string                   `json:"timestamp"`
-	Alerts    []map[string]interface{} `json:"alerts"` // raw alert objects
+	Alerts    []map[string]interface{} `json:"alerts"`
 }
 
-// HTMLReportData defines the structure for templating
 type HTMLReportData struct {
-	Title      string
-	Date       string
-	TargetURL  string
-	ScanID     string
-	AlertCount int
-	Alerts     []Alert
+	Title       string
+	Date        string
+	TargetURL   string
+	ScanID      string
+	AlertCount  int
+	Alerts      []Alert
+	HighCount   int
+	MediumCount int
+	LowCount    int
+	InfoCount   int
 }
 
-// GenerateHTMLReport converts scan result into a beautiful HTML report
+func countRisk(alerts []Alert, level string) int {
+	count := 0
+	for _, a := range alerts {
+		if a.Risk == level {
+			count++
+		}
+	}
+	return count
+}
+
 func GenerateHTMLReport(scanPath string) error {
 	file, err := os.ReadFile(scanPath)
 	if err != nil {
@@ -50,7 +60,6 @@ func GenerateHTMLReport(scanPath string) error {
 		return fmt.Errorf("failed to parse scan result: %v", err)
 	}
 
-	// Parse raw alerts into structured list
 	var alerts []Alert
 	for _, a := range result.Alerts {
 		alert := Alert{
@@ -67,12 +76,16 @@ func GenerateHTMLReport(scanPath string) error {
 	}
 
 	data := HTMLReportData{
-		Title:      "Automated Vulnerability Assessment Report",
-		Date:       time.Now().Format("02-Jan-2006 15:04:05"),
-		TargetURL:  result.TargetURL,
-		ScanID:     result.ScanID,
-		AlertCount: len(alerts),
-		Alerts:     alerts,
+		Title:       "Automated Vulnerability Assessment Report",
+		Date:        time.Now().Format("02-Jan-2006 15:04:05"),
+		TargetURL:   result.TargetURL,
+		ScanID:      result.ScanID,
+		AlertCount:  len(alerts),
+		Alerts:      alerts,
+		HighCount:   countRisk(alerts, "High"),
+		MediumCount: countRisk(alerts, "Medium"),
+		LowCount:    countRisk(alerts, "Low"),
+		InfoCount:   countRisk(alerts, "Informational"),
 	}
 
 	tmpl, err := template.New("report").Parse(htmlTemplate)
@@ -80,7 +93,6 @@ func GenerateHTMLReport(scanPath string) error {
 		return fmt.Errorf("failed to parse HTML template: %v", err)
 	}
 
-	// Create reports directory if not exists
 	_ = os.MkdirAll("reports", 0755)
 	fileName := fmt.Sprintf("reports/report_%s.html", time.Now().Format("20060102_150405"))
 	fileOut, err := os.Create(fileName)
@@ -98,7 +110,6 @@ func GenerateHTMLReport(scanPath string) error {
 	return nil
 }
 
-// toString safely casts interface to string
 func toString(i interface{}) string {
 	if str, ok := i.(string); ok {
 		return str
@@ -106,7 +117,6 @@ func toString(i interface{}) string {
 	return ""
 }
 
-// HTML template string
 const htmlTemplate = `
 <!DOCTYPE html>
 <html lang="en">
@@ -120,12 +130,19 @@ const htmlTemplate = `
       color: #333;
       background-color: #f4f4f4;
     }
-    h1, h2, h3 { color: #1a1a1a; }
-    .header {
+    pre.logo {
+      font-family: monospace;
+      font-size: 12px;
+      line-height: 14px;
+      white-space: pre-wrap;
       text-align: center;
-      background-color: #222;
+      color: #444;
+    }
+    .header, .footer {
+      background-color: #111;
       color: #fff;
-      padding: 40px 0;
+      text-align: center;
+      padding: 20px;
     }
     .section {
       margin-top: 40px;
@@ -143,105 +160,84 @@ const htmlTemplate = `
     .risk-Medium { color: orange; }
     .risk-Low { color: green; }
     .risk-Informational { color: blue; }
-    .chart {
-      width: 100%;
-      max-width: 600px;
-      height: 300px;
-      margin: auto;
-    }
     table {
-      width: 100%;
+      width: 60%;
+      margin: 0 auto;
       border-collapse: collapse;
-      margin-top: 10px;
     }
     th, td {
-      border: 1px solid #ccc;
-      padding: 12px;
-      text-align: left;
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: center;
     }
     th {
-      background: #eaeaea;
+      background-color: #eaeaea;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <h1>{{ .Title }}</h1>
-    <p><strong>Date:</strong> {{ .Date }}</p>
-    <p><strong>Target:</strong> {{ .TargetURL }}</p>
-    <p><strong>Scan ID:</strong> {{ .ScanID }}</p>
-  </div>
+<div class="header">
+  <pre class="logo">
+██████╗ ██████╗ ██████╗ ███████╗██████╗  ██████╗  ██████╗  ██████╗ 
+██╔══██╗██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔═══██╗██╔════╝ 
+██████╔╝██║   ██║██████╔╝█████╗  ██████╔╝██║   ██║██║   ██║██║  ███╗
+██╔═══╝ ██║   ██║██╔═══╝ ██╔══╝  ██╔═══╝ ██║   ██║██║   ██║██║   ██║
+██║     ╚██████╔╝██║     ███████╗██║     ╚██████╔╝╚██████╔╝╚██████╔╝
+╚═╝      ╚═════╝ ╚═╝     ╚══════╝╚═╝      ╚═════╝  ╚═════╝  ╚═════╝ 
+        <strong>CyberScan Inc.</strong>
+  </pre>
+  <h1>{{ .Title }}</h1>
+  <p><strong>Date:</strong> {{ .Date }}</p>
+  <p><strong>Target:</strong> {{ .TargetURL }}</p>
+  <p><strong>Scan ID:</strong> {{ .ScanID }}</p>
+</div>
 
-  <div class="section">
-    <h2>Table of Contents</h2>
-    <ul>
-      <li>1. Executive Summary</li>
-      <li>2. Methodology</li>
-      <li>3. Vulnerability Findings</li>
-      <li>4. Graphical Summary</li>
-    </ul>
-  </div>
+<div class="section">
+  <h2>1. Executive Summary</h2>
+  <p>This report summarizes findings from an automated security scan using the Modular Payload Generator Tool and OWASP ZAP. It outlines discovered vulnerabilities including XSS, SQLi, and CMDi in the target application.</p>
+</div>
 
-  <div class="section">
-    <h2>1. Executive Summary</h2>
-    <p>This report presents the results of an automated security assessment conducted using the Modular Payload Generator Tool and OWASP ZAP. The purpose of this assessment was to identify potential vulnerabilities such as Cross-Site Scripting (XSS), SQL Injection (SQLi), and Command Injection in the specified web target.</p>
-  </div>
+<div class="section">
+  <h2>2. Methodology</h2>
+  <ul>
+    <li>Payload generation (XSS, SQLi, CMDi)</li>
+    <li>Encoding, obfuscation, and WAF bypass</li>
+    <li>Automatic injection and fuzzing</li>
+    <li>Active scan using OWASP ZAP Daemon API</li>
+    <li>Alert analysis and structured report generation</li>
+  </ul>
+</div>
 
-  <div class="section">
-    <h2>2. Methodology</h2>
-    <p>The assessment process includes:</p>
-    <ul>
-      <li>Payload generation (XSS, SQLi, CMDi)</li>
-      <li>Encoding and WAF bypass techniques</li>
-      <li>Automatic injection of payloads into URL/query/form parameters</li>
-      <li>Active scan using OWASP ZAP’s daemon API</li>
-      <li>Collection and analysis of vulnerabilities</li>
-    </ul>
-  </div>
+<div class="section">
+  <h2>3. Vulnerability Summary ({{ .AlertCount }} Total)</h2>
+  <table>
+    <tr><th>Severity</th><th>Count</th></tr>
+    <tr><td style="color:red;"><strong>High</strong></td><td>{{.HighCount}}</td></tr>
+    <tr><td style="color:orange;"><strong>Medium</strong></td><td>{{.MediumCount}}</td></tr>
+    <tr><td style="color:green;"><strong>Low</strong></td><td>{{.LowCount}}</td></tr>
+    <tr><td style="color:blue;"><strong>Informational</strong></td><td>{{.InfoCount}}</td></tr>
+  </table>
+</div>
 
-  <div class="section">
-    <h2>3. Vulnerability Findings ({{ .AlertCount }} Total)</h2>
-    {{range .Alerts}}
-    <div class="alert">
-      <h3>{{.Alert}}</h3>
-      <p><strong>Risk:</strong> <span class="risk-{{.Risk}}">{{.Risk}}</span></p>
-      <p><strong>Parameter:</strong> {{.Param}}</p>
-      <p><strong>Evidence:</strong> {{.Evidence}}</p>
-      <p><strong>Description:</strong> {{.Desc}}</p>
-      <p><strong>Solution:</strong> {{.Solution}}</p>
-      <p><strong>URL:</strong> {{.URL}}</p>
-    </div>
-    {{end}}
+<div class="section">
+  <h2>4. Detailed Findings</h2>
+  {{range .Alerts}}
+  <div class="alert">
+    <h3>{{.Alert}}</h3>
+    <p><strong>Risk:</strong> <span class="risk-{{.Risk}}">{{.Risk}}</span></p>
+    <p><strong>Parameter:</strong> {{.Param}}</p>
+    <p><strong>Evidence:</strong> {{.Evidence}}</p>
+    <p><strong>Description:</strong> {{.Desc}}</p>
+    <p><strong>Solution:</strong> {{.Solution}}</p>
+    <p><strong>URL:</strong> {{.URL}}</p>
   </div>
+  {{end}}
+</div>
 
-  <div class="section">
-    <h2>4. Graphical Summary</h2>
-    <canvas id="vulnChart" class="chart"></canvas>
-  </div>
-
-  <script>
-    const ctx = document.getElementById('vulnChart').getContext('2d');
-    const data = {
-      labels: ['High', 'Medium', 'Low', 'Informational'],
-      datasets: [{
-        label: 'Vulnerabilities by Risk Level',
-        backgroundColor: ['#e74c3c','#f39c12','#2ecc71','#3498db'],
-        data: [
-          {{countRisk .Alerts "High"}},
-          {{countRisk .Alerts "Medium"}},
-          {{countRisk .Alerts "Low"}},
-          {{countRisk .Alerts "Informational"}}
-        ]
-      }]
-    };
-    const config = {
-      type: 'bar',
-      data: data,
-    };
-    new Chart(ctx, config);
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="footer">
+  <p>&copy; {{ .Date }} — CyberScan Inc. | Report generated by PayloadGen Toolkit</p>
+</div>
 
 </body>
 </html>

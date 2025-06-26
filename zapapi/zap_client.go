@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/reports"
@@ -119,13 +118,19 @@ func RunFullZAPScan(targetURL, host, port, apiKey string) error {
 	if err != nil {
 		return fmt.Errorf("failed to fetch alerts: %v", err)
 	}
+
 	if len(alerts) == 0 {
 		fmt.Println("✅ No alerts found!")
-		return nil
+	} else {
+		fmt.Printf("⚠️ Found %d alerts in total\n", len(alerts))
 	}
 
 	filtered := filterImportantAlerts(alerts)
-	printAlerts(filtered)
+	if len(filtered) > 0 {
+		printAlerts(filtered)
+	} else {
+		fmt.Println("ℹ️ No high or medium risk alerts to display.")
+	}
 
 	// Save filtered results
 	scanResult := reports.ScanResult{
@@ -152,7 +157,7 @@ func RunFullZAPScan(targetURL, host, port, apiKey string) error {
 
 	fmt.Println("📝 JSON report saved to:", jsonPath)
 
-	// Generate HTML report
+	// Always generate HTML report, even if alerts are empty
 	if err := reports.GenerateHTMLReport(jsonPath); err != nil {
 		return fmt.Errorf("failed to generate HTML report: %v", err)
 	}
@@ -165,8 +170,8 @@ func RunFullZAPScan(targetURL, host, port, apiKey string) error {
 func filterImportantAlerts(alerts []map[string]interface{}) []map[string]interface{} {
 	filtered := []map[string]interface{}{}
 	for _, alert := range alerts {
-		risk := strings.ToLower(fmt.Sprintf("%v", alert["risk"]))
-		if risk == "high" || risk == "medium" {
+		risk := fmt.Sprintf("%v", alert["risk"])
+		if risk == "High" || risk == "Medium" {
 			filtered = append(filtered, alert)
 		}
 	}
