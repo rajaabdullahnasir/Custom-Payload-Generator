@@ -7,9 +7,9 @@ import (
 	"os"
 
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/modules"
+	"github.com/rajaabdullahnasir/Custom-Payload-Generator/reports"
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/utils"
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/zapapi"
-	"github.com/rajaabdullahnasir/Custom-Payload-Generator/reports"
 )
 
 var helpText = `
@@ -42,6 +42,7 @@ FLAGS:
 EXAMPLES:
   ./payloadgen --xss --output=json 
   ./payloadgen --cmdi --output=txt 
+  ./payloadgen --sqli
   ./payloadgen --zapscan --target=http://example.com --zap-key=abc123
 
   Enjoy hacking ethically! 🔐
