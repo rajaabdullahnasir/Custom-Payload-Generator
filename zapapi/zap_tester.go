@@ -5,11 +5,13 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	
 	"time"
 
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/reports"
 )
 
+// ScanResult is the structure of the scan result saved in JSON
 type ScanResult struct {
 	TargetURL string                   `json:"target_url"`
 	ScanID    string                   `json:"scan_id"`
@@ -17,58 +19,72 @@ type ScanResult struct {
 	Alerts    []map[string]interface{} `json:"alerts"`
 }
 
-// RunZAPScan performs the full scan and report generation process
+// RunZAPScan performs the full scan and generates both JSON and HTML reports
 func RunZAPScan(targetURL, host, port, apiKey string) error {
 	fmt.Println("🚀 Starting ZAP Scan on:", targetURL)
 
-	client := NewClient(host, port, apiKey)
+	client := ZAPClient{
+		BaseURL: fmt.Sprintf("http://%s:%s", host, port),
+		APIKey:  apiKey,
+	}
 
-	scanID, err := client.StartActiveScan(targetURL)
+	// Step 1: Spider the target
+	fmt.Println("🕷️ Spidering target...")
+	if err := client.SpiderURL(targetURL); err != nil {
+		return fmt.Errorf("❌ Spider error: %v", err)
+	}
+	time.Sleep(5 * time.Second)
+
+	// Step 2: Start active scan
+	scanID, err := client.StartScan(targetURL)
 	if err != nil {
 		return fmt.Errorf("❌ Failed to start scan: %v", err)
 	}
 	fmt.Println("🔍 Scan ID:", scanID)
 
+	// Step 3: Wait for completion
 	fmt.Println("⏳ Waiting for scan to complete...")
-	if err := client.WaitForScanCompletion(scanID); err != nil {
+	if err := client.WaitForCompletion(scanID); err != nil {
 		return fmt.Errorf("❌ Scan wait error: %v", err)
 	}
 	fmt.Println("✅ Scan complete!")
 
+	// Step 4: Fetch alerts
 	alerts, err := client.GetAlerts(targetURL)
 	if err != nil {
-		return fmt.Errorf("❌ Could not retrieve alerts: %v", err)
+		return fmt.Errorf("❌ Failed to retrieve alerts: %v", err)
 	}
-	fmt.Printf("📦 %d alerts retrieved\n", len(alerts))
+	fmt.Printf("📦 Retrieved %d alerts\n", len(alerts))
 
-	// Step 1: Save alerts to results.json
+	// Step 5: Save alerts in JSON format
+	if err := os.MkdirAll("reports", 0755); err != nil {
+		return fmt.Errorf("❌ Failed to create reports directory: %v", err)
+	}
+
 	result := ScanResult{
 		TargetURL: targetURL,
 		ScanID:    scanID,
 		Timestamp: time.Now().Format(time.RFC3339),
 		Alerts:    alerts,
 	}
-	if err := saveResults(result); err != nil {
+
+	jsonPath := filepath.Join("reports", "results.json")
+	if err := saveScanResult(result, jsonPath); err != nil {
 		return fmt.Errorf("❌ Failed to save results.json: %v", err)
 	}
-	fmt.Println("📝 Results saved to reports/results.json")
+	fmt.Println("📝 Results saved to", jsonPath)
 
-	// Step 2: Generate HTML report
+	// Step 6: Generate HTML report
 	fmt.Println("📄 Generating HTML report...")
-	if err := reports.GenerateHTMLReport("reports/results.json"); err != nil {
+	if err := reports.GenerateHTMLReport(jsonPath); err != nil {
 		return fmt.Errorf("❌ HTML report generation failed: %v", err)
 	}
-
 	fmt.Println("✅ HTML report generated successfully.")
 	return nil
 }
 
-// saveResults stores the JSON output of the scan
-func saveResults(result ScanResult) error {
-	if err := os.MkdirAll("reports", 0755); err != nil {
-		return err
-	}
-	path := filepath.Join("reports", "results.json")
+// saveScanResult encodes and writes ScanResult to a file
+func saveScanResult(result ScanResult, path string) error {
 	file, err := os.Create(path)
 	if err != nil {
 		return err

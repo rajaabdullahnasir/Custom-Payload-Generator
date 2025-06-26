@@ -9,6 +9,7 @@ import (
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/modules"
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/utils"
 	"github.com/rajaabdullahnasir/Custom-Payload-Generator/zapapi"
+	"github.com/rajaabdullahnasir/Custom-Payload-Generator/reports"
 )
 
 var helpText = `
@@ -100,9 +101,21 @@ func main() {
 		if *target == "" || *zapKey == "" {
 			log.Fatal("❌ Target URL and ZAP API key are required for ZAP scan.")
 		}
-		err := zapapi.RunZAPScan(*target, *zapHost, *zapPort, *zapKey)
+
+		err := zapapi.RunFullZAPScan(*target, *zapHost, *zapPort, *zapKey)
 		if err != nil {
 			log.Fatalf("❌ ZAP Scan failed: %v", err)
+		}
+
+		// Automatically generate HTML report from ZAP output
+		reportPath := "reports/results.json"
+		if _, err := os.Stat(reportPath); err == nil {
+			err := reports.GenerateHTMLReport(reportPath)
+			if err != nil {
+				log.Fatalf("❌ Failed to generate HTML report: %v", err)
+			}
+		} else {
+			log.Println("⚠️ No results.json found. Skipping report generation.")
 		}
 	}
 }
