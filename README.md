@@ -2,8 +2,6 @@
 
 A **custom payload generation toolkit** for Ethical Hackers, Penetration Testers, and Security Researchers. This tool automates the creation of **XSS**, **SQL Injection**, and **Command Injection** payloads, supporting advanced **encoding**, **obfuscation**, and **reporting** techniques — all from the command line.
 
-> 🔐 Developed with ❤️ by [@rajaabdullahnasir](https://github.com/rajaabdullahnasir)
-
 ---
 
 ## 🧠 What This Tool Can Do
@@ -62,6 +60,7 @@ payload-generator-go/
 
 - Go 1.22+
 - For Linux: `xclip` for clipboard functionality
+- OWASP ZAP running in **daemon mode**
 
 ```bash
 sudo apt install xclip
@@ -110,6 +109,12 @@ go build -o payloadgen
 ./payloadgen --cmdi --output=json --save
 ```
 
+## Perform ZAP Scan (Active Vulnerability Assessment)
+
+```bash
+./payloadgen --zapscan --target=http://testasp.vulnweb.com --zap-key=YOUR_ZAP_API_KEY
+```
+
 ---
 
 ## ✨ Features
@@ -123,7 +128,7 @@ go build -o payloadgen
 | 🎭 Obfuscation | Spacing, comments, homoglyphs |
 | 📋 Clipboard   | Copy directly for instant testing |
 | 📤 Output      | Console, JSON, TXT |
-| 🔎 ZAP Ready   | Integrate with ZAP (disabled by default) |
+| 🔎 ZAP Ready   | Integrate with ZAP |
 
 ---
 
@@ -133,6 +138,7 @@ go build -o payloadgen
 ./payloadgen --xss --output=json --save
 ./payloadgen --sqli --output=txt
 ./payloadgen --cmdi --clipboard
+./payloadgen --zapscan --target=http://testphp.vulnweb.com --zap-key=your_zap_key
 ```
 
 ---

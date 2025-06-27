@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// Alert defines the structure of a ZAP scan alert
 type Alert struct {
 	Alert    string `json:"alert"`
 	Name     string `json:"name"`
@@ -19,6 +20,7 @@ type Alert struct {
 	URL      string `json:"url"`
 }
 
+// ScanResult is the full structure of scan result
 type ScanResult struct {
 	TargetURL string                   `json:"target_url"`
 	ScanID    string                   `json:"scan_id"`
@@ -26,6 +28,7 @@ type ScanResult struct {
 	Alerts    []map[string]interface{} `json:"alerts"`
 }
 
+// HTMLReportData is passed to the HTML template
 type HTMLReportData struct {
 	Title       string
 	Date        string
@@ -39,6 +42,7 @@ type HTMLReportData struct {
 	InfoCount   int
 }
 
+// Helper to count risk levels
 func countRisk(alerts []Alert, level string) int {
 	count := 0
 	for _, a := range alerts {
@@ -49,6 +53,7 @@ func countRisk(alerts []Alert, level string) int {
 	return count
 }
 
+// GenerateHTMLReport creates an HTML report from JSON scan results
 func GenerateHTMLReport(scanPath string) error {
 	file, err := os.ReadFile(scanPath)
 	if err != nil {
@@ -110,6 +115,7 @@ func GenerateHTMLReport(scanPath string) error {
 	return nil
 }
 
+// Convert interface{} to string safely
 func toString(i interface{}) string {
 	if str, ok := i.(string); ok {
 		return str
@@ -126,7 +132,7 @@ const htmlTemplate = `
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 40px;
+      margin: 0;
       color: #333;
       background-color: #f4f4f4;
     }
@@ -136,20 +142,29 @@ const htmlTemplate = `
       line-height: 14px;
       white-space: pre-wrap;
       text-align: center;
-      color: #444;
+      color: #ddd;
+      margin: 0;
     }
-    .header, .footer {
-      background-color: #111;
+    .header {
+      background-color: #2d3e50;
       color: #fff;
       text-align: center;
       padding: 20px;
     }
+    .footer {
+      background-color: #2d3e50;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+    }
     .section {
-      margin-top: 40px;
+      margin: 40px auto;
       background: #fff;
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 80%;
     }
     .alert {
       border-left: 5px solid #c0392b;
@@ -185,7 +200,7 @@ const htmlTemplate = `
 ██╔═══╝ ██║   ██║██╔═══╝ ██╔══╝  ██╔═══╝ ██║   ██║██║   ██║██║   ██║
 ██║     ╚██████╔╝██║     ███████╗██║     ╚██████╔╝╚██████╔╝╚██████╔╝
 ╚═╝      ╚═════╝ ╚═╝     ╚══════╝╚═╝      ╚═════╝  ╚═════╝  ╚═════╝ 
-        <strong>CyberScan Inc.</strong>
+                     <strong>CyberScan Inc.</strong>
   </pre>
   <h1>{{ .Title }}</h1>
   <p><strong>Date:</strong> {{ .Date }}</p>
